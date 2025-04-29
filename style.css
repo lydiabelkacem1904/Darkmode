@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white; /* Fond par défaut */
+  transition: background-color 0.5s ease;
+}
+
+#toggle {
+  display: none;
+}
+
+.container {
+  text-align: center;
+}
+
+.switch {
+  font-size: 22px;
+  background: #ffe81f;
+  color: #000;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Images - par défaut à 120px */
+.corner-img {
+  position: fixed;
+  width: 120px; /* Taille par défaut */
+  bottom: 10px;
+  transition: opacity 0.5s ease, width 0.5s ease;
+  z-index: 10;
+}
+
+.yoda {
+  left: 10px;
+  opacity: 1; /* Yoda visible par défaut */
+}
+
+.vador {
+  right: 10px;
+  opacity: 0; /* Vador invisible par défaut */
+}
+
+/* Mode Nuit : L'arrière-plan devient noir */
+#toggle:checked ~ body {
+  background-color: black;
+}
+
+/* Le bouton garde la même couleur */
+#toggle:checked ~ .container .switch {
+  background: #ffe81f;
+  color: #000;
+}
+
+/* Agrandissement des images en mode nuit */
+#toggle:checked ~ .corner-img {
+  width: 180px; /* Agrandissement des images */
+}
+
+/* Masquer Yoda et afficher Vador en mode nuit */
+#toggle:checked ~ .corner-img.yoda {
+  opacity: 0;
+}
+
+#toggle:checked ~ .corner-img.vador {
+  opacity: 1;
+}
